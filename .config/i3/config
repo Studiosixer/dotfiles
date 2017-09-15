@@ -212,5 +212,9 @@ bar {
 	}
 }
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+
 exec feh --bg-fill ~/Pictures/derwent-water-islands.jpg 
 exec --no-startup-id compton --opacity '0:_NET_WM_STATE@:32a *= "NET_WM_STATE_HIDDEN"'
