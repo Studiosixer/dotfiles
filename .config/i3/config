@@ -27,13 +27,16 @@ set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
 
-for_window [class="(?i)chromium"] title_format "  %title"
-for_window [class="(?i)urxvt" tiling] border pixel 2
-for_window [class="(?i)urxvt"] title_format "  %title"
+hide_edge_borders smart
+new_window pixel
+
+for_window [class="(?i)chromium" tiling] title_format "  %title"
+for_window [class="(?i)urxvt" tiling] title_format "  %title"
+
 
 workspace 1 output DP-1-3
-workspace 2 output eDP-1
-workspace 3 output VGA-1
+workspace 2 output VGA-1
+workspace 3 output eDP-1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -210,4 +213,4 @@ bar {
 }
 
 exec feh --bg-fill ~/Pictures/derwent-water-islands.jpg 
-exec --no-startup-id compton
+exec --no-startup-id compton --opacity '0:_NET_WM_STATE@:32a *= "NET_WM_STATE_HIDDEN"'
