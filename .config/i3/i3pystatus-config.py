@@ -11,7 +11,7 @@ status.register("clock",
 
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
-status.register("load")
+# status.register("load")
 
 # The battery monitor has many formatting options, see README for details
 
@@ -46,6 +46,7 @@ status.register("battery",
         "FULL": "Bat full ☻",
     },)
 
+status.register("pulseaudio")
 # Shows the address and up/down state of eth0. If it is up the address is shown in
 # green (the default value of color_up) and the CIDR-address is shown
 # (i.e. 10.10.10.42/24).
@@ -60,7 +61,7 @@ status.register("network",
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
     interface="wlp3s0",
-    format_up="{essid} {v4cidr} ({quality:03.0f}%)",)
+    format_up="{essid} {v4cidr} ({quality:3.0f}%)",)
 
 # Shows disk usage of /
 # Format:
