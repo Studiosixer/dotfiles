@@ -45,7 +45,7 @@ URxvt*color20:                        #43a5d5
 URxvt*color21:                        #eeeeee
 
 ! ------------------------------------------------------------------------------
-! Cursor selection stuff
+! Cursor selection stuff from here: https://github.com/muennich/urxvt-perls
 URxvt.perl-lib: /home/waeledui/Dev/urxvt-perls/
 ! ------------------------------------------------------------------------------
 
