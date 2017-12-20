@@ -1,3 +1,11 @@
 #!/bin/bash
 
-cat <(ls /usr/local/bin) <(join <(ls /usr/share/applications/ -1 | sed 's/.desktop//' | sort) <(ls /usr/bin/ -1)) | sort | rofi -dmenu | { read app; $app & }
+STATIC_LIST=(
+"remmina"
+)
+
+cat \
+  <(ls /usr/local/bin) \
+  <(join <(ls /usr/share/applications/ -1 | sed 's/.desktop//' | sort) <(ls /usr/bin/ -1)) \
+  <(echo "${STATIC_LIST}") \
+  | sort | rofi -dmenu | { read app; $app & }

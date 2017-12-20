@@ -27,8 +27,11 @@ set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
 set $transparent #00000000
+set $gaps_inner_default 20
+set $gaps_outer_default 5
 
-set $mail "neomutt"
+set $mail "sup"
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -125,7 +128,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -155,10 +158,10 @@ bindsym $mod+Pause mode "$mode_system"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+  position top
 	height 25
 	status_command python ~/.config/i3/i3pystatus-config.py
 	i3bar_command i3bar -t
-	output primary
 	colors {
 		separator $base03
 		background $transparent
@@ -174,14 +177,16 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-mute 0 false ;
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
 
-gaps inner 20
-gaps outer 5
+gaps inner $gaps_inner_default
+gaps outer $gaps_outer_default
 
 for_window [class="^.*"] border pixel 0
 #new_window pixel
 
 for_window [class="(?i)chromium" tiling] title_format "  %title"
+for_window [class="(?i)firefox" tiling] title_format "  %title"
 for_window [class="(?i)urxvt" tiling] title_format "  %title"
+for_window [class="(?i)remmina" tiling] title_format "  %title"
 for_window [title="(?i)VIM" tiling] title_format "  %title"
 for_window [class="(?i)nemo" tiling] title_format "  %title"
 
@@ -209,13 +214,34 @@ bindsym $mod+i		resize grow height 10 px or 10 ppt
 bindsym $mod+o		resize grow width 10 px or 10 ppt
 # bindsym $mod+Shift+v		[title="(?)neomutt"] move window to workspace current; fullscreen enable
 
+bindsym $mod+b			    gaps inner current plus 5
+bindsym $mod+Shift+b		gaps inner current minus 5
+bindsym $mod+n			    gaps outer current plus 5
+bindsym $mod+Shift+n		gaps outer current minus 5
+bindsym $mod+Shift+g		gaps inner current set $gaps_inner_default; gaps outer current set $gaps_outer_default
+
 # Applications
 bindsym $mod+Shift+a		exec --no-startup-id chromium
-#bindsym $mod+Shift+m		exec --no-startup-id chromium --app=https://outlook.office.com
-bindsym $mod+Shift+m		exec --no-startup-id urxvt -e $mail; 
+bindsym $mod+Shift+m		exec --no-startup-id chromium --app=https://outlook.office.com
+bindsym $mod+Shift+t        exec --no-startup-id chromium --app=https://teams.microsoft.com
+bindsym $mod+Shift+z        [title="Microsoft Teams"] move to workspace current, fullscreen enable
+#bindsym $mod+Shift+m		exec --no-startup-id urxvt -e $mail; 
 bindsym $mod+Shift+f		exec --no-startup-id urxvt -e ranger
 bindsym $mod+Shift+w		exec --no-startup-id windows
 bindsym $mod+Shift+BackSpace	exec --no-startup-id bash ~/.config/i3/flash_window.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id "sudo /usr/local/bin/brightnes_down.sh"
+bindsym XF86MonBrightnessUp exec --no-startup-id "sudo /usr/local/bin/brightnes_up.sh"
 
-exec --no-startup-id feh --bg-fill ~/Pictures/beautiful_scenery_mountains_lake_nature_93318_3840x2160.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/iceland_mountains_snow_night_lilac_sky_stars_milky_way_82743_3840x2400.jpg
 exec --no-startup-id compton --opacity '0:_NET_WM_STATE@:32a *= "NET_WM_STATE_HIDDEN"'
+
+###---Dropdown/Scratchpad Windows---###
+#First I have a tmux window used for background scripts.
+#I'll later bind this to mod+p.
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 1080 720
+for_window [instance="dropdown"] move position center
+for_window [instance="dropdown"] move scratchpad
+exec --no-startup-id urxvt -name dropdown
+bindsym $mod+p [instance="dropdown"] scratchpad show; move position center
+

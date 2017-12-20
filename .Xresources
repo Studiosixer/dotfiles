@@ -44,14 +44,21 @@ URxvt*color19:                        #3B758C
 URxvt*color20:                        #43a5d5
 URxvt*color21:                        #eeeeee
 
+! ------------------------------------------------------------------------------
+! Cursor selection stuff
+URxvt.perl-lib: /home/waeledui/Dev/urxvt-perls/
+! ------------------------------------------------------------------------------
+
 Xcursor.size: 16W
 URxvt.urgentOnBell: true
 URxvt.scrollBar: false
-URxvt.font: xft:DejaVu Sans Mono Nerd Font:size=12
+URxvt.font: xft:DejaVu Sans Mono Nerd Font:size=12, xft:Symbola
 URxvt.depth: 32
 URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
-URxvt.perl-ext-common: default,matcher,vtwheel
+URxvt.perl-ext-common: default,matcher,vtwheel,font-size,keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
 
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
