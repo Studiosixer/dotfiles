@@ -30,8 +30,9 @@ set $transparent #00000000
 set $gaps_inner_default 20
 set $gaps_outer_default 5
 
-set $mail "sup"
-
+# set $mail_command "chromium --app=https://outlook.office.com"
+set $terminal="st"
+set $mail_command "st -e neomutt"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -52,7 +53,8 @@ font pango:DejaVu Sans Mono Nerd Font 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -191,8 +193,16 @@ for_window [title="(?i)VIM" tiling] title_format "  %title"
 for_window [class="(?i)nemo" tiling] title_format "  %title"
 
 workspace 1 output DP-1-3
-workspace 2 output VGA-1
-workspace 3 output eDP-1
+workspace 2 output DP-1-3
+workspace 3 output DP-1-3
+workspace 4 output DP-1-3
+workspace 5 output DP-1-3
+workspace 6 output VGA-1
+workspace 7 output VGA-1
+workspace 8 output VGA-1
+workspace 9 output VGA-1
+workspace 10 output VGA-1
+#workspace 3 output eDP-1
 
 # Customized to using vim keybindings to move around
 
@@ -218,21 +228,21 @@ bindsym $mod+b			    gaps inner current plus 5
 bindsym $mod+Shift+b		gaps inner current minus 5
 bindsym $mod+n			    gaps outer current plus 5
 bindsym $mod+Shift+n		gaps outer current minus 5
+bindsym $mod+g          gaps inner current set 0; gaps outer current set 0
 bindsym $mod+Shift+g		gaps inner current set $gaps_inner_default; gaps outer current set $gaps_outer_default
 
 # Applications
 bindsym $mod+Shift+a		exec --no-startup-id chromium
-bindsym $mod+Shift+m		exec --no-startup-id chromium --app=https://outlook.office.com
+bindsym $mod+Shift+m		exec --no-startup-id $mail_command
 bindsym $mod+Shift+t        exec --no-startup-id chromium --app=https://teams.microsoft.com
 bindsym $mod+Shift+z        [title="Microsoft Teams"] move to workspace current, fullscreen enable
-#bindsym $mod+Shift+m		exec --no-startup-id urxvt -e $mail; 
 bindsym $mod+Shift+f		exec --no-startup-id urxvt -e ranger
 bindsym $mod+Shift+w		exec --no-startup-id windows
 bindsym $mod+Shift+BackSpace	exec --no-startup-id bash ~/.config/i3/flash_window.sh
 bindsym XF86MonBrightnessDown exec --no-startup-id "sudo /usr/local/bin/brightnes_down.sh"
 bindsym XF86MonBrightnessUp exec --no-startup-id "sudo /usr/local/bin/brightnes_up.sh"
 
-exec_always --no-startup-id feh --bg-fill ~/Pictures/iceland_mountains_snow_night_lilac_sky_stars_milky_way_82743_3840x2400.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/mountains_trees_frozen_lake_winter_landscape_93344_3840x2160.jpg
 exec --no-startup-id compton --opacity '0:_NET_WM_STATE@:32a *= "NET_WM_STATE_HIDDEN"'
 
 ###---Dropdown/Scratchpad Windows---###
@@ -244,4 +254,3 @@ for_window [instance="dropdown"] move position center
 for_window [instance="dropdown"] move scratchpad
 exec --no-startup-id urxvt -name dropdown
 bindsym $mod+p [instance="dropdown"] scratchpad show; move position center
-
