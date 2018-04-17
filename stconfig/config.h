@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "DejaVu Sans Mono Nerd Font:pixelsize=16:antialias=true:autohint=true";
+char font[] = "Cousine Nerd Font Mono:pixelsize=16:antialias=true:autohint=true";
 int borderpx = 2;
 
 /*
