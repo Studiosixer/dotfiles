@@ -55,7 +55,7 @@ status.register("pulseaudio")
 #
 # Note: the network module requires PyPI package netifaces
 status.register("network",
-    interface="eno1",
+    interface="enp62s0u1u2",
     format_up="{v4cidr}",)
 
 # Note: requires both netifaces and basiciw (for essid and quality)
@@ -70,12 +70,12 @@ status.register("disk",
     path="/",
     format="{used}/{total}G [{avail}G]",)
 
-status.register("mail",
-		backends=[maildir.MaildirMail(
-			directory="/home/waeledui/.mail/INBOX")
-		],
-		format="  {unread}",
-		log_level=20,
-		hide_if_null=False)
+#status.register("mail",
+#  backends=[maildir.MaildirMail(
+#   directory="/home/waeledui/.mail/INBOX")
+#  ],
+#  format="  {unread}",
+#  log_level=20,
+#  hide_if_null=False)
 
 status.run()
