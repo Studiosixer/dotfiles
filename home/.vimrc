@@ -25,4 +25,3 @@ endif
 " ranger.vim
 map <C-t> :RangerCurrentFileNewTab<CR>
 map <C-f> :RangerCurrentFile<CR>
-

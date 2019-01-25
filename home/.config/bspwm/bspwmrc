@@ -3,6 +3,11 @@
 sxhkd &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
+if [ $(xrandr | grep 'DP-1-2\|DP-1-3' | wc -l) == "2" ]
+then
+	bspc monitor DP-1-3 -d I II III IV V
+	bspc monitor DP-1-2 -d VI VII VIII IX X
+fi
 
 bspc config border_width         2
 bspc config window_gap          12

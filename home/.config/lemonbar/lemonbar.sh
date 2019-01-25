@@ -29,8 +29,25 @@ PanelVolume()
         fi
 }
 
+CurrentDesktop()
+{
+	cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+	tot=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
+	# Desktop numbers start at 0. if you want desktop 2 to be in second place,
+	# start counting from 1 instead of 0. But wou'll lose a group ;)
+	for w in $(seq 0 $((cur - 1))); do line="${line}\uf1db"; done
+
+	# enough =, let's print the current desktop
+	line="${line}\uf111"
+
+	# En then the other groups
+	for w in `seq $((cur + 2)) $tot`; do line="${line}\uf1db"; done
+
+	# don't forget to print that line!
+	echo -e $line
+}
 
 while true; do
-	echo -e "%{c}%{F#FFFFFF}%{B#0000FF} $(Clock) | $(Battery) | $(PanelVolume) %{F-}%{B-}"
-        sleep 1
+	echo -e "%{l} $(CurrentDesktop)%{c}%{F#FFFFFF} $(Clock) | $(Battery) | $(PanelVolume) %{F-}%{B-}"
+        sleep 0.25
 done
