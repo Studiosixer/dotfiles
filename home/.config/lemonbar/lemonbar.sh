@@ -19,13 +19,13 @@ PanelVolume()
         #volLevel=$(amixer get Master | tail -n 1 | cut -d '[' -f 2 | sed 's/%.*//g')
         volStatus=$(pactl list | grep "Sink #0" -A 15 |  grep "Mute: "| awk '{print($2)}')
 	volLevel=$(pactl list | grep "Sink #0" -A 15 | grep "^\sVolume: " | awk '{print($5)}')
-        # is alsa muted or not muted?
+	audioOutputName=$(pactl list | grep "Sink #0" -A 15 | grep "^\sDescription: " | cut -d ' ' -f 3-)
         if [ "$volStatus" == "yes" ]
         then
-                echo "%{F#FF0000} \uf026 $volLevel %{F-}"
+		echo "%{F#FF0000} \uf026 $volLevel ($audioOutputName) %{F-}"
         else
                 # If it is muted, make the font red
-                echo "%{F#FFFFFF} \uf028 $volLevel %{F-}"
+		echo "%{F#FFFFFF} \uf028 $volLevel ($audioOutputName) %{F-}"
         fi
 }
 

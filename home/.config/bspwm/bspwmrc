@@ -7,6 +7,10 @@ if [ $(xrandr | grep 'DP-1-2\|DP-1-3' | wc -l) == "2" ]
 then
 	bspc monitor DP-1-3 -d I II III IV V
 	bspc monitor DP-1-2 -d VI VII VIII IX X
+elif xrandr | grep 'HDMI-1 connected primary 2560x1080'
+then
+	bspc monitor HDMI-1 -d I II III IV V
+	bspc monitor eDP-1 -d VI VII VIII IX X
 fi
 
 bspc config border_width         2
