@@ -18,3 +18,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 source /usr/share/nvm/init-nvm.sh
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"

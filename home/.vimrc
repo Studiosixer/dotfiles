@@ -1,12 +1,3 @@
-set nowrap
-set number
-
-set nocompatible
-filetype plugin indent on
-au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
-nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
-nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
-
 call plug#begin()
 
 Plug 'mileszs/ack.vim'
@@ -17,6 +8,13 @@ Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
+set nowrap
+set number
+set nocompatible
+
+au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
+au FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
+
 " ack.vim
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -25,3 +23,6 @@ endif
 " ranger.vim
 map <C-t> :RangerCurrentFileNewTab<CR>
 map <C-f> :RangerCurrentFile<CR>
+
+nnoremap <unique> <leader><cr> :JavaSearchContext<cr> :only<cr> 
+nnoremap <leader>d :JavaDocSearch -x declarations<cr>
