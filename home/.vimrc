@@ -15,6 +15,7 @@ set nocompatible
 
 au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 au FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
+au FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 
 " ack.vim
 if executable('ag')

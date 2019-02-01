@@ -3,11 +3,15 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# General settings
+alias ls='ls --color=auto'
+
 # Vim Stuff
 bindkey -v
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
+bindkey -M viins '^R' history-incremental-pattern-search-backward
 
 # Homeshick stuff
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
@@ -61,7 +65,7 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
 POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time dir_writable disk_usage vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time dir_writable virtualenv vi_mode)
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 
@@ -83,4 +87,5 @@ POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_STATUS_CROSS=true
 
-
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='\uE0B6'
