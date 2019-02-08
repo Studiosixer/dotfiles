@@ -13,7 +13,7 @@ set nowrap
 set number
 set nocompatible
 
-au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
+au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 au FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 
@@ -34,3 +34,4 @@ let g:pymode_lint_on_fly = 1
 
 nnoremap <unique> <leader><cr> :JavaSearchContext<cr> :only<cr> 
 nnoremap <leader>d :JavaDocSearch -x declarations<cr>
+

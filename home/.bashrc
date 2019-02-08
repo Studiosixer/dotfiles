@@ -19,3 +19,9 @@ source /usr/share/nvm/init-nvm.sh
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+
+# Autocomplete ssh commands
+complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
+
+# Autocomplete git commands
+source "$HOME/.git-completion.bash"
