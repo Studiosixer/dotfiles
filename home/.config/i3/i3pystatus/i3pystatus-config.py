@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from i3pystatus import Status
 
 status = Status()
@@ -46,7 +48,7 @@ status.register("battery",
     },)
 
 status.register("pulseaudio")
-    
+
 # Shows the address and up/down state of eth0. If it is up the address is shown in
 # green (the default value of color_up) and the CIDR-address is shown
 # (i.e. 10.10.10.42/24).
