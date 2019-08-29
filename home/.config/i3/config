@@ -30,7 +30,7 @@ set $base0E #c0b7f9
 set $base0F #fcc09e
 set $transparent #00000000
 
-set $terminal st
+set $terminal alacritty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -54,7 +54,7 @@ floating_modifier $mod
 bindsym $mod+Shift+Return exec $terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 bindsym $mod+p exec rofi -show drun
@@ -64,10 +64,10 @@ bindsym $mod+p exec rofi -show drun
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -126,7 +126,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -229,7 +229,7 @@ bindsym $mod+Shift+End mode "$mode_system"
 gaps inner 20
 # gaps outer 5
 
-exec_always --no-startup-id feh -Z --bg-fill ~/Pictures/wallpaper/hot_air_balloons_in_the_air-wallpaper-5120x2160.jpg
+exec_always --no-startup-id feh -Z --bg-fill ~/Pictures/space_cataclysm_planet_art_explosion_asteroids_comets_fragments_98315_2560x1440.jpg
 exec --no-startup-id compton --shadow-radius=12 --shadow-opacity=0.9 --detect-client-opacity --blur-background --backend glx --opacity '0:_NET_WM_STATE@:32a *= "NET_WM_STATE_HIDDEN"'
 
 

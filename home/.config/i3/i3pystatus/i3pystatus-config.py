@@ -61,7 +61,7 @@ status.register("network",
     format_up="{v4cidr}",)
 
 status.register("network",
-    interface="enp0s20f0u1u3i5",
+    interface="enp62s0u1u2",
     format_up="{v4cidr}",)
 
 # Note: requires both netifaces and basiciw (for essid and quality)
